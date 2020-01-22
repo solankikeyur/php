@@ -2,76 +2,106 @@
 
 
 function patternOne($n){
-    
+    echo "<table border = 2>";
     for($i = $n;$i >= 0;$i=$i-2){
-        
+        echo "<tr>";
         for($j = 0;$j <= $i;$j++){
-            echo "*"." ";
+            echo "<td>";
+            echo "*";
+            echo "</td>";
         }
-        echo "<br>";
+        echo "</tr>";
     }
+    echo "</table>";
     
 }
 patternOne(10);
 
 function patternTwo($n){
+    echo "<table border = 2>";
     for($i = $n;$i >= 0;$i--){
+        echo "<tr>";
         for($j = 1;$j <= $i;$j++){
-            echo $j." ";
+            echo "<td>";
+            echo $j;
+            echo "</td>";
         }
-        echo "<br>";
+        echo "</tr>";
     }
+    echo "</table>";
 }
 
-patternTwo(8);
+patternTwo(9);
 
 function patternThree($n){
+    echo "<table border=2>";
     for($i = 0;$i <= $n;$i++){
+        echo "<tr>";
         for($j = 0;$j <= $i;$j++){
-            echo "*"." ";
+            echo "<td>";
+            echo "*";
+            echo "</td>";
         }
-        echo "<br>";
+        echo "</tr>";
     }
+    echo "</table>";
 }
 
 patternThree(10);
 
 function patternFour($n){
+    echo "<table border = 2>";
     for($i = 0;$i <= $n;$i++){
+        echo "<tr>";
         for($j = 1;$j <= $i;$j++){
-            echo $j." ";
+            echo "<td>";
+            echo $j;
+            echo "</td>";
         }
-        echo "<br>";
+        echo "</tr>";
     }
+    echo "</table>";
 }
 patternFour(10);
 
 echo "<br>";
 
 function patternFive($num){
+    echo "<table border = 2>";
     for($i = 1;$i <= 4;$i++){
+        echo "<tr>";
        for($j = $i;$j <= $num;$j = $j+4){
-           echo $j." ";
+           echo "<td>";
+           echo $j;
+           echo "</td>";
        }
-       echo "<br>";
+       echo "</tr>";
     }
+    echo "</table>";
 }
 patternFive(12);
 
 echo "<br>";
 function patternSix(){
     $c = 0;
+    echo "<table border = 2>";
     for($row = 1;$row <= 5;$row++){
+        echo "<tr>";
         for($col = 1;$col <= $row + $c;$col++){
+            echo "<td>";
             echo "*";
+            echo "</td>";
         }
         
         $c = $row + $c;
         for($j = 1;$j <= $row;$j++){
+            echo "<td>";
             echo "0";
+            echo "</td>";
         }
-        echo "<br>";
+        echo "</tr>";
     }
+    echo "</table>";
     
 }
 patternSix();
@@ -79,13 +109,18 @@ echo "<br>";
 
 function patternFloyd(){
     $c = 1;
+    echo "<table border = 2>";
     for($i = 1;$i <= 5;$i++){
+        echo "<tr>";
         for($j = 1;$j <= $i;$j++){
-            echo $c." ";
+            echo "<td>";
+            echo $c;
+            echo "</td>";
             $c = $c + 1;
         }
-        echo "<br>";
+        echo "</tr>";
     }
+    echo "</table>";
 }
 
 patternFloyd();

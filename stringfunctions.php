@@ -69,11 +69,16 @@ echo strpos($str,$find)."<br>";
 echo "<h4>String Replace</h4>";
 echo substr_replace($str,'ok',11,5)."<br>";
 
+$ss = "o";
+echo "check<br>";
+echo substr_replace($ss,'k',0,1)."<br>";
+
 echo str_replace($find,"IS",$str)."<br>";
 
 $list = array('is','keyur','nikunj');
 $r = array('IS','KEYUR','NIKUNJ');
 
 echo str_replace($list,$r,$str);
+
 ?>
 

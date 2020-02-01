@@ -1,0 +1,74 @@
+ul li {
+    display: inline;
+    padding: 35px;
+}
+ul{
+    padding-top: 45px;
+    
+}
+.top-nav{
+    background-color: brown;
+    height: 100px;
+}
+a{
+    color: white;
+    border: 1px white solid;
+    padding:8px;
+}
+.data-login{
+    background-color: brown;
+    color: white;
+    padding: 25px;
+    width: 500px;
+   
+}
+.data-login h1{
+    color: white;
+    border: 2px solid white;
+}
+.data-login label{
+    font-size: 22px;
+}
+.data-login #login{
+    font-size: 25px;
+}
+.data-student input,select,label{
+    
+    margin: 15px;
+}
+table tr td{
+    padding:20px;
+}
+table{
+    margin: 45px;
+}
+table tr th{
+    background-color: brown;
+    color: white;
+}
+table tr td a{
+    color:navy;
+}
+h1{
+    color: brown;
+    font-size: 45px;
+}
+body{
+    border: 2px solid black;
+    
+}
+fieldset{
+    margin: 45px;
+    background-color: lightgray;
+}
+h2{
+    text-align: center;
+    font-size: 35px;
+    background-color: brown;
+    padding: 15px;
+    color: white;
+    margin: 18px;
+}
+span{
+    color:red;
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registration Form</title>
+</head>
+<body>
+    <form method="POST" action="reg_form.php">
+        <fieldset>
+            <legend>Account Information</legend>
+            <div class="data-account">
+                <div class="data-prefix">
+                    <label for="prefix">Prefix</label>
+                    <select name="account[prefix]" id="prefix">
+                        <option>Mr</option>
+                    </select>
+                </div>
+                <div class="data-firstname">
+                    <label for="firstname">Firstname</label>
+                    <input type="text" name="account[firstname]" id="firstname" >
+                </div>
+                <div class="data-lastname">
+                    <label for="lastname">Lastname</label>
+                    <input type="text" name="account[lastname]" id="lastname" >
+                </div>
+                <div class="data-email">
+                    <label for="email">E-mail</label>
+                    <input type="email" name="account[email]" id="email" >
+                </div>
+                <div class="data-phonenumber">
+                    <label for="phonenumber">Phonenumber</label>
+                    <input type="number" name="account[phonenumber]" id="phonenumber" >
+                </div>
+                <div class="data-password">
+                    <label for="password">Password</label>
+                    <input type="password" name="account[password]" id="password" >
+                </div>
+                <div class="data-conpassword">
+                    <label for="conpassword">Password</label>
+                    <input type="password" name="account[conpassword]" id="conpassword" >
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Address Information</legend>
+            <div class="data-address">
+                <div class="data-addressline1">
+                    <label for="addressline1">Addressline1</label>
+                    <input type="text" name="address[addressline1]" id="addressline1" >
+                </div>
+                <div class="data-addressline2">
+                    <label for="addressline2">Addressline2</label>
+                    <input type="text" name="address[addressline2]" id="addressline2" >
+                </div>
+                <div class="data-company">
+                    <label for="company">Company</label>
+                    <input type="text" name="address[company]" id="company" >
+                </div>
+                <div class="data-state">
+                    <label for="state" >State</label>
+                    <input type="text" name="address[state]" id="state" >
+                </div>
+                <div class="data-country">
+                    <label for="country">Country</label>
+                    <select name="address[country]">
+                        <option>India</option>
+                    </select>
+                </div>
+                <div class="data-postalcode">
+                    <label for="postalcode">Postalcode</label>
+                    <input type="number" name="address[postalcode]" id="postalcode" >
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Other Information</legend>
+            <div class="data-other">
+                <div class="data-describe">
+                    <label for="describe">Describe</label>
+                    <textarea id="describe" name="other[describe]" rows="10" cols="25"></textarea>
+                </div>
+                <div class="data-profile">
+                    <label for="profileimage">Profile Image</label>
+                    <input type="file" name="other[profileimage]" id="profileimage" >
+                </div>
+                <div class="data-certificate">
+                    <label for="certificate">Certificate</label>
+                    <input type="file" name="other[certificate]" id="certificate" >
+                </div>
+                <div class="data-business">
+                    <label for="business">How long you have been in business ?</label>
+                    <input type="radio" name="other[business][]" id="business" >
+                </div>
+                <div class="data-clients">
+                    <label for="clients">Number of clients each week</label>
+                    <select name="other[clients][]">
+                        <option>1-5</option>
+                    </select>
+                </div>
+                <div class="data-getintouch">
+                    <label for="getintouch">How do you like to get in touch ?</label>
+                    <input type="checkbox" name="other[getintouch][]" id="getintouch" >
+                </div>
+                <div class="data-hobbies">
+                    <label for="hobbies">Hobbies</label>
+                    <select name="other[hobbies][]" multiselect>
+                        <option>Singing</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+        <input type="submit" value="Register" name="submit" >
+    </form>
+</body>
+</html>

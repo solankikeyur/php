@@ -1,0 +1,9 @@
+array difference
+array difference is used to compare two arrays and find out difference between them.
+
+array combine
+array combine used to combile two arrays.
+array_combine($array1,$array2);
+
+array filter
+array filter used filter array 

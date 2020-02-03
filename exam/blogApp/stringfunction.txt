@@ -1,0 +1,10 @@
+string replace
+--------------------------
+used to replace a particular string with our desired string.
+there are two types of string replace case sensitive and other is not case sensitive
+
+case sensitive syntax:-
+str_replace($searchString,$replaceString)
+
+not case sensitive syntax:-
+str_ireplace($searchString,$replaceString)

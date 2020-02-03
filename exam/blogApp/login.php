@@ -18,6 +18,10 @@ if(!checkSession('email')){
     if($result){
         
         $user = mysqli_fetch_assoc($result);
+        $createDate = date("Y/m/d");
+        $uid = $user['u_id'];
+        $updateQuery = "UPDATE user SET u_lastlogin='$createDate' WHERE u_id='$uid'";
+        mysqli_query($conn,$updateQuery);
         $_SESSION['email'] = $_POST['log']['email'];
         $_SESSION['u_name'] = $user['u_fname'];
         $_SESSION['u_id'] = $user['u_id'];

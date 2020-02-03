@@ -37,7 +37,7 @@ $result = fetchRecord($conn,"blog_post","u_id = '$u_id' ");
         </tr>
         <?php while($blog = mysqli_fetch_assoc($result)): ?>
         <tr>
-            <td><?= $blog['b_id']; ?></td>
+            <td><a href="view_blog_post.php?id=<?=$blog['b_id'];?>"><?= $blog['b_id']; ?></a></td>
             <td><?= $blog['b_category']; ?></td>
             <td><?= $blog['b_title']; ?></td>
             <td><?= $blog['b_published_at']; ?></td>

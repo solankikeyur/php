@@ -241,11 +241,20 @@ if(isset($_POST['reg']['submit'])){
     if(checkErrors('reg')){
         echo "There are errors";
     }elseif(isset($_POST['reg']['check'])){
+        $email = $_POST['reg']['email'];
+        $record = fetchRecord($conn,"user","u_email = '$email'");
+        if(mysqli_num_rows($record) > 0){
+            echo "<script>alert('Email already exists');location.href='login.php';</script>";
 
-        $user = prepareData();
+        }else{
+            $user = prepareData();
         insertRecord($conn,"user",$user);
         echo "<script>alert('Registered Successfully');location.href = 'login.php';</script>";
         echo "Readdy to insert";
+        }
+        
+    }else{
+        echo "<script>alert('Please check terms and conditions');</script>";
     }
 }
 
@@ -262,14 +271,28 @@ if(isset($_POST['addCat']['submit'])){
 }
 
 if(isset($_POST['blog']['submit'])){
-    $blog = prepareBlogData();
-    insertRecord($conn,"blog_post",$blog);
-    echo "<script>alert('Created Successfully');location.href = 'blog_posts.php';</script>";
+    $url = $_POST['blog']['url'];
+    $record = fetchRecord($conn,"blog_post","b_url = '$url'");
+    if(mysqli_num_rows($record) > 0){
+        echo "<script>alert('URL already exists');</script>";
+    }else{
+        $blog = prepareBlogData();
+        insertRecord($conn,"blog_post",$blog);
+        echo "<script>alert('Created Successfully');location.href = 'blog_posts.php';</script>";    
+    }
+}
 
+if(isset($_POST['reg']['update'])){
+    $user = prepareData();
+    $createDate = date("Y/m/d");
+    $user['u_updatedat'] = $createDate;
+    $id = $_SESSION['u_id'];
+    updateRecord($conn,"user",$user,"u_id = '$id'");
 }
 
 if(isset($_POST['blog']['update'])){
     $blog = prepareBlogData();
+    
     $id = $_GET['id'];
     updateRecord($conn,"blog_post",$blog,"b_id = '$id' ");
 }

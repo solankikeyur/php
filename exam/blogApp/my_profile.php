@@ -61,6 +61,7 @@ $result = mysqli_fetch_assoc($r);
         </tr>
     </table>
    <a href="blog_posts.php"> <input type="button" value="HOME"  ></a>
+   <a href="update_user.php?id=<?=$u_id;?>"> <input type="button" value="UPDATE DETAILS"  ></a>
     <a href = "logout.php"><input type="button" value="LOGOUT"  ></a>
 </body>
 </html>

@@ -43,6 +43,7 @@ function fetchAllRecord($conn,$tableName){
     }
 }
 
+
 function deleteRecord($conn,$tableName,$condition){
     $deleteQuery = "DELETE FROM $tableName WHERE $condition";
     if(mysqli_query($conn,$deleteQuery)){

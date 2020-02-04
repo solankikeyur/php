@@ -263,6 +263,10 @@ if(isset($_POST['addCat']['submit'])){
         move_uploaded_file($file_tmp,"images/".$fileName);
         $category['c_image'] = "images/".$fileName;
         insertRecord($conn,"category",$category);
+        $id = mysqli_insert_id($conn);
+        $parentCat = [];
+        $parentCat['cat_name'] = $category['c_title'];
+        insertRecord($conn,"parent_cat",$parentCat);
         echo "<script>alert('Created Successfully');location.href = 'manage_cat.php';</script>";       
     }
 }

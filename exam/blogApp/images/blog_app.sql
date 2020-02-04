@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 03, 2020 at 02:25 PM
+-- Generation Time: Feb 03, 2020 at 01:12 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.26
 
@@ -46,7 +46,7 @@ CREATE TABLE `blog_post` (
 --
 
 INSERT INTO `blog_post` (`b_id`, `u_id`, `b_title`, `b_url`, `b_content`, `b_image`, `b_category`, `b_published_at`, `b_created_at`, `b_updated_at`) VALUES
-(1, 1, 'blog title', 'asddas', 'adsada', '', 'Education,TEchnology', '2020-02-06', '2020-02-03', '0000-00-00'),
+(1, 0, 'blog title', 'asddas', 'adsada', '', 'Education,TEchnology', '2020-02-07', '2020-02-03', '0000-00-00'),
 (4, 2, 'fourth', 'adsd', 'asdad', '', 'Automobile', '2020-02-12', '2020-02-03', '0000-00-00');
 
 -- --------------------------------------------------------
@@ -121,7 +121,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`u_id`, `u_fname`, `u_prefix`, `u_lname`, `u_mobile`, `u_email`, `u_password`, `u_lastlogin`, `u_information`, `u_createdate`, `u_updatedat`) VALUES
 (1, 'Keyur', 'MR', 'Solanki', 7016002021, 'solankikeyur8@gmail.com', '123', '0000-00-00', 'hihi', '2020-02-03', '0000-00-00'),
-(2, 'admin', 'Dr', 'admin', 7016002021, 'admin@gmail.com', 'admin', '2020-02-03', 'OHk Test USer', '2020-02-03', '2020-02-03');
+(2, 'Keyur', 'Dr', 'Solanki', 7016002021, 'admin@gmail.com', 'admin', '0000-00-00', 'OHk Test USer', '2020-02-03', '0000-00-00');
 
 --
 -- Indexes for dumped tables

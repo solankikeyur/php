@@ -6,6 +6,7 @@ session_start();
 if(isset($_SESSION['email'])){
     if(!empty($_SESSION['email'])){
         $_SESSION['email'] = "";
+        session_destroy();
     }
 }
 

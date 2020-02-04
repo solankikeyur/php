@@ -4,7 +4,6 @@ function connect($dbHost,$dbUser,$dbPass,$dbName){
     $db = mysqli_connect($dbHost,$dbUser,$dbPass,$dbName);
 
     if($db){
-        echo "Connection Successfull";
         return $db;
     }else{
         echo "Error in Connection:-".mysqli_error($db);
@@ -29,7 +28,7 @@ function fetchRecord($conn,$tableName,$condition){
     if(mysqli_num_rows($result) > 0){
         return $result;
     }else{
-        return 0;
+        return $result;
     }
 }
 

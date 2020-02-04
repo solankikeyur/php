@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Manage Category</title>
-    <style>
-        ul li{
-            display:inline;
-        }
-        </style>
+    <link rel="stylesheet" href="css/main.css" >
 </head>
 <?php 
 require_once "post_data.php";
@@ -18,16 +14,10 @@ $selectQuery = "SELECT * FROM category c INNER JOIN parent_cat p ON c.parent_cat
 $result = mysqli_query($conn,$selectQuery);
 ?>
 <body>
-    <div class="data-nav">
-        <ul>
-            <li><a  href="blog_posts.php">HOME</a></li>
-            <li><a href="manage_cat.php">Manage Category</a></li>
-            <li><a href="">My Profile</a></li>
-            <li><a href="logout.php">Logout</a></li>
-        </ul>
-    </div>
+<?php require_once "header.php"; ?>
+
     <h1>Blog Category</h1><br><br>
-    <a href="add_category.php"><input type ="button" value="Add Category" ></a>
+    <a href="add_category.php"><input type ="button" value="Add Category" class="styleBtn" ></a>
     <table  border = "2">
         <tr>
             <th>Category Id</th>
@@ -39,11 +29,11 @@ $result = mysqli_query($conn,$selectQuery);
         <?php while($cat = mysqli_fetch_assoc($result)): ?>
         <tr>
             <td><?= $cat['c_id']; ?></td>
-            <td>Image</td>
+            <td><img src="<?=$cat['c_image']?>" width="100px" height="100px"></td>
             <td><?= $cat['cat_name']; ?></td>
             <td><?= $cat['created_at']; ?></td>
             <td>
-                <a href="">Edit</a>
+                <a href="edit_cat.php?id=<?=$cat['c_id']?>">Edit</a>
                 <a href="delete.php?id=<?= $cat['c_id']?>&tbl=category">Delete</a>
             </td>
         </tr>

@@ -48,7 +48,6 @@ function checkSession($sessionName){
     }
 }
 
-
 function checkFormValidation($section,$fieldName){
     if(isset($_POST[$section][$fieldName])){
         switch($fieldName){
@@ -148,9 +147,6 @@ function prepareData(){
             }
         }
     }
-
-    $createDate = date("Y/m/d");
-    $preparedData['u_createdate'] = $createDate;
     return $preparedData;
 }
 
@@ -179,17 +175,11 @@ function prepareCatData(){
 
                 case 'parentCat':
                     $preparedData['parent_cat_id'] = $value;
-                break;
-
-                                
+                break;                                
             }
         }
-        
-}
-$createDate = date("Y/m/d");
-         $preparedData['created_at'] = $createDate;
+}    
          return $preparedData;
-
 }
 
 function prepareBlogData(){
@@ -220,15 +210,13 @@ function prepareBlogData(){
                     $preparedData['b_category'] = $cat;
                                 
             }
-        }
-        
+        }  
 }
-        $createDate = date("Y/m/d");
+        $createDate = date("Y/m/d")." ".date("h:i:sa");
         $u_id = $_SESSION['u_id'];
          $preparedData['b_created_at'] = $createDate;
          $preparedData['u_id'] = $u_id;
          return $preparedData;
-
 }
 
 function sessionRedirect($sessionName){
@@ -248,6 +236,8 @@ if(isset($_POST['reg']['submit'])){
 
         }else{
             $user = prepareData();
+            $createDate = date("Y/m/d")." ".date("h:i:sa");
+    $user['u_createdate'] = $createDate;
         insertRecord($conn,"user",$user);
         echo "<script>alert('Registered Successfully');location.href = 'login.php';</script>";
         echo "Readdy to insert";
@@ -259,14 +249,21 @@ if(isset($_POST['reg']['submit'])){
 }
 
 if(isset($_POST['addCat']['submit'])){
-    $category = prepareCatData();
+   $category = prepareCatData();
     $url = $_POST['cat']['url'];
     $record = fetchRecord($conn,"category","c_url = '$url'");
     if(mysqli_num_rows($record) > 0){
         echo "<script>alert('URL already exists');</script>";
     }else{
+        $createDate = date("Y/m/d")." ".date("h:i:sa");
+         $category['created_at'] = $createDate;
+         
+        $fileName = $_FILES["image"]["name"];
+        $file_tmp = $_FILES["image"]["tmp_name"];
+        move_uploaded_file($file_tmp,"images/".$fileName);
+        $category['c_image'] = "images/".$fileName;
         insertRecord($conn,"category",$category);
-        echo "<script>alert('Created Successfully');location.href = 'manage_cat.php';</script>";    
+        echo "<script>alert('Created Successfully');location.href = 'manage_cat.php';</script>";       
     }
 }
 
@@ -278,23 +275,45 @@ if(isset($_POST['blog']['submit'])){
     }else{
         $blog = prepareBlogData();
         insertRecord($conn,"blog_post",$blog);
-        echo "<script>alert('Created Successfully');location.href = 'blog_posts.php';</script>";    
+        $bid = mysqli_insert_id($conn);
+        $catIds = $_POST['blog']['category'];
+        foreach($catIds as $cn){
+            $result = fetchRecord($conn,"parent_cat","cat_name = '$cn'");
+            $r = mysqli_fetch_assoc($result);
+            $array = [];
+            $array['c_id'] = $r['parent_cat_id'];
+            $array['b_id'] = $bid;
+            insertRecord($conn,"post_category",$array);
+        }
+        echo "<script>alert('Created Successfully');location.href = 'blog_posts.php';</script>";  
     }
 }
 
 if(isset($_POST['reg']['update'])){
     $user = prepareData();
-    $createDate = date("Y/m/d");
-    $user['u_updatedat'] = $createDate;
+    $updateDate = date("Y/m/d")." ".date("h:i:sa");
+    $user['u_updatedat'] = $updateDate;
     $id = $_SESSION['u_id'];
     updateRecord($conn,"user",$user,"u_id = '$id'");
 }
 
 if(isset($_POST['blog']['update'])){
     $blog = prepareBlogData();
-    
+    $updateDate = date("Y/m/d")." ".date("h:i:sa");
+     $blog['b_updated_at'] = $updateDate;  
     $id = $_GET['id'];
     updateRecord($conn,"blog_post",$blog,"b_id = '$id' ");
 }
+
+if(isset($_POST['addCat']['update'])){
+    $updateCat = prepareCatData();
+    $fileName = $_FILES["image"]["name"];
+    $file_tmp = $_FILES["image"]["tmp_name"];
+    move_uploaded_file($file_tmp,"images/".$fileName);
+    $updateCat['c_image'] = "images/".$fileName;
+    $id = $_GET['id'];
+    updateRecord($conn,"category",$updateCat,"c_id = '$id'");
+}
+
 
 ?>

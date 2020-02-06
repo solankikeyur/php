@@ -9,13 +9,16 @@
 </head>
 <?php require_once "post_data.php";
 sessionRedirect('email'); 
-$id = $_GET['id'];
-$result = fetchRecord($conn,"category","c_id = '$id'");
-$category = mysqli_fetch_assoc($result);
-$pId = $category['parent_cat_id'];
-$parentCat = fetchRecord($conn,"parent_cat","parent_cat_id = '$pId'");
-$pResult = mysqli_fetch_assoc($parentCat);
-
+if(isset($_GET['id'])){
+    $id = $_GET['id'];
+    $result = fetchRecord($conn,"category","c_id = '$id'");
+    $category = mysqli_fetch_assoc($result);
+    $pId = $category['parent_cat_id'];
+    $parentCat = fetchRecord($conn,"parent_cat","parent_cat_id = '$pId'");
+    $pResult = mysqli_fetch_assoc($parentCat);
+}else{
+    echo "<script>alert('NO id found to edit');location.href='manage_cat.php'</script>";
+}
 ?>
 <body>
     <h1>Update Category</h1><hr>
@@ -23,20 +26,20 @@ $pResult = mysqli_fetch_assoc($parentCat);
     <form method="POST" action="edit_cat.php?id=<?=$id?>" enctype="multipart/form-data" >
     <div class="data-cat">
         <div class="data-title">
-            <label for="title">Title</label><br><br>
-            <input type="text" name="cat[title]" id="title" value="<?=$category['c_title']?>"><br><br>
+            <label for="title">Title</label>
+            <input type="text" name="cat[title]" id="title" value="<?=$category['c_title']?>">
         </div>
         <div class="data-content">
-            <label for="content">Content</label><br><br>
-            <textarea name="cat[content]" id="content" cols="30" rows="10"><?=$category['c_content']?></textarea><br><br>
+            <label for="content">Content</label>
+            <textarea name="cat[content]" id="content" cols="30" rows="10"><?=$category['c_content']?></textarea>
         </div>
         <div class="data-url">
-            <label for="url">URL</label><br><br>
-            <input type="text" name="cat[url]" id="url" value="<?=$category['c_url']?>"><br><br>
+            <label for="url">URL</label>
+            <input type="text" name="cat[url]" id="url" value="<?=$category['c_url']?>">
         </div>
         <div class="data-meta">
-            <label for="metaTitle">Meta-Title</label><br><br>
-            <input type="text" name="cat[meta]" id="metaTitle" value="<?=$category['c_meta_title']?>"><br><br>
+            <label for="metaTitle">Meta-Title</label>
+            <input type="text" name="cat[meta]" id="metaTitle" value="<?=$category['c_meta_title']?>">
         </div>
         <div class="data-parentCat">
             <label for="parentCat">ParentCategory</label>
@@ -46,7 +49,7 @@ $pResult = mysqli_fetch_assoc($parentCat);
                 <option value=<?= $cat['parent_cat_id']; ?> <?php if($cat['cat_name'] == $pResult['cat_name'] ){echo "selected";} ?>><?= $cat['cat_name']; ?></option>
                 <?php endwhile; ?>
             </select>
-        </div><br><br>
+        </div>
         <div class="data-image">
             <label for="catImage">Image</label>
             <input type="file" name="image" id="catImage">

@@ -16,24 +16,24 @@ $category = fetchAllRecord($conn,'parent_cat');
     <form method="POST" action = "add_blog_post.php">
         <div class="data-blog">
             <div class="data-title">
-                <label for="title">Title</label><br><br>
-                <input type="text" name="blog[title]" id="title"><br><br>
+                <label for="title">Title</label>
+                <input type="text" name="blog[title]" id="title">
             </div>
             <div class="data-content">
-                <label for="content">content</label><br><br>
-                <textarea name="blog[content]" id="content" cols="30" rows="10"></textarea><br><br>
+                <label for="content">content</label>
+                <textarea name="blog[content]" id="content" cols="30" rows="10"></textarea>
             </div>
             <div class="data-url">
-                <label for="url">URL</label><br><br>
-                <input type="text" name="blog[url]" id="url"><br><br>
+                <label for="url">URL</label>
+                <input type="text" name="blog[url]" id="url">
             </div>
             <div class="data-published">
-                <label for="published">Published At</label><br><br>
-                <input type="date" name="blog[published]" id="published"><br><br>
+                <label for="published">Published At</label>
+                <input type="date" name="blog[published]" id="published">
             </div>
             <div class="data-category">
-                <label for="category">Category</label><br><br>
-                <select name="blog[category][]" multiple><br><br>
+                <label for="category">Category</label>
+                <select name="blog[category][]" multiple>
                     <?php while($c = mysqli_fetch_assoc($category)): ?>
                     <option value="<?= $c['cat_name']; ?>"><?= $c['cat_name']; ?></option>
                     <?php endwhile; ?>

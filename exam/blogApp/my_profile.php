@@ -9,12 +9,10 @@
 </head>
 <?php 
 require_once "post_data.php";
-
 $u_id = $_SESSION['u_id'];
 sessionRedirect('email');
 $r = fetchRecord($conn,"user","u_id = '$u_id' ");
 $result = mysqli_fetch_assoc($r);
-
 ?>
 <body>
 <?php require_once "header.php"; ?>

@@ -178,8 +178,8 @@ function prepareCatData(){
                 break;                                
             }
         }
-}    
-         return $preparedData;
+    }    
+    return $preparedData;
 }
 
 function prepareBlogData(){
@@ -212,11 +212,11 @@ function prepareBlogData(){
             }
         }  
 }
-        $createDate = date("Y/m/d")." ".date("h:i:sa");
-        $u_id = $_SESSION['u_id'];
-         $preparedData['b_created_at'] = $createDate;
-         $preparedData['u_id'] = $u_id;
-         return $preparedData;
+    $createDate = date("Y/m/d")." ".date("h:i:sa");
+    $u_id = $_SESSION['u_id'];
+    $preparedData['b_created_at'] = $createDate;
+    $preparedData['u_id'] = $u_id;
+    return $preparedData;
 }
 
 function sessionRedirect($sessionName){
@@ -257,7 +257,6 @@ if(isset($_POST['addCat']['submit'])){
     }else{
         $createDate = date("Y/m/d")." ".date("h:i:sa");
          $category['created_at'] = $createDate;
-         
         $fileName = $_FILES["image"]["name"];
         $file_tmp = $_FILES["image"]["tmp_name"];
         move_uploaded_file($file_tmp,"images/".$fileName);

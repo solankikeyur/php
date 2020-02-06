@@ -66,3 +66,8 @@ span{
     color: red;
     font-style: italic;
 }
+
+input[type=text],input[type=password],textarea,input[type=date],select,input[type=file],input[type=number]{
+    margin: 10px;
+    display: block;
+}

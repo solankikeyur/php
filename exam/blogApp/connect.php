@@ -20,6 +20,7 @@ function insertRecord($conn,$tableName,$dataArray){
         echo "Error in Insertion:-".mysqli_error($conn);
     }
 }
+
 function fetchRecord($conn,$tableName,$condition){
     $selectQuery = "SELECT * FROM $tableName WHERE $condition";
     $result = mysqli_query($conn,$selectQuery);
@@ -53,7 +54,6 @@ function deleteRecord($conn,$tableName,$condition){
 
 function updateRecord($conn,$tableName,$data,$condition){
     $cols = [];
-
     foreach ($data as $key => $value) {
         $cols[] = "$key = '$value'";
     }

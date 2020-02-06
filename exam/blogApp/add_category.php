@@ -14,20 +14,20 @@ sessionRedirect('email'); ?>
     <form method="POST" action="add_category.php" enctype="multipart/form-data" >
     <div class="data-cat">
         <div class="data-title">
-            <label for="title">Title</label><br><br>
-            <input type="text" name="cat[title]" id="title"><br><br>
+            <label for="title">Title</label>
+            <input type="text" name="cat[title]" id="title">
         </div>
         <div class="data-content">
-            <label for="content">Content</label><br><br>
-            <textarea name="cat[content]" id="content" cols="30" rows="10"></textarea><br><br>
+            <label for="content">Content</label>
+            <textarea name="cat[content]" id="content" cols="30" rows="10"></textarea>
         </div>
         <div class="data-url">
-            <label for="url">URL</label><br><br>
-            <input type="text" name="cat[url]" id="url"><br><br>
+            <label for="url">URL</label>
+            <input type="text" name="cat[url]" id="url">
         </div>
         <div class="data-meta">
-            <label for="metaTitle">Meta-Title</label><br><br>
-            <input type="text" name="cat[meta]" id="metaTitle"><br><br>
+            <label for="metaTitle">Meta-Title</label>
+            <input type="text" name="cat[meta]" id="metaTitle">
         </div>
         <div class="data-parentCat">
             <label for="parentCat">ParentCategory</label>
@@ -37,7 +37,7 @@ sessionRedirect('email'); ?>
                 <option value=<?= $cat['parent_cat_id']; ?>><?= $cat['cat_name']; ?></option>
                 <?php endwhile; ?>
             </select>
-        </div><br><br>
+        </div>
         <div class="data-image">
             <label for="catImage">Image</label>
             <input type="file" name="image" id="catImage">

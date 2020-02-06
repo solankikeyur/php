@@ -16,7 +16,7 @@ $result = mysqli_query($conn,$selectQuery);
 <body>
 <?php require_once "header.php"; ?>
 
-    <h1>Blog Category</h1><br><br>
+    <h1>Blog Category</h1>
     <a href="add_category.php"><input type ="button" value="Add Category" class="styleBtn" ></a>
     <table  border = "2">
         <tr>

@@ -14,7 +14,7 @@ $result = fetchRecord($conn,"blog_post","u_id = '$u_id' ");
 ?>
 <body>
     <?php require_once "header.php"; ?>
-    <h1>BLOG POSTS</h1><br><br>
+    <h1>BLOG POSTS</h1>
     <a href="add_blog_post.php"><input type ="button" value="Add Blog Post" class="styleBtn" ></a>
     <table  border = "2">
         <tr>
@@ -36,7 +36,7 @@ $result = fetchRecord($conn,"blog_post","u_id = '$u_id' ");
                 <a href="delete.php?id=<?= $blog['b_id']; ?>&tbl=blog_post">Delete</a>
             </td>
         </tr>
-    <?php endwhile; ?>
+        <?php endwhile; ?>
         <?php endif; ?>
     </table>
 </body>

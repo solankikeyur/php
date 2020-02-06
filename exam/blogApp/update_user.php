@@ -29,28 +29,28 @@ $result = mysqli_fetch_assoc($r);
                 </select>
             </div>
             <div class="data-fname">
-                <label for="fName">Firstname</label><br><br>
-                <input type="text" name="reg[fname]" id="fName" value="<?= $result['u_fname']; ?>" > <?= checkFormValidation('reg','fname'); ?><br><br>
+                <label for="fName">Firstname</label>
+                <input type="text" name="reg[fname]" id="fName" value="<?= $result['u_fname']; ?>" > <?= checkFormValidation('reg','fname'); ?>
             </div>
             <div class="data-lname">
-                <label for="lName">Lastname</label><br><br>
-                <input type="text" name="reg[lname]" id="lName" value="<?= $result['u_lname']; ?>"><?= checkFormValidation('reg','lname'); ?><br><br>
+                <label for="lName">Lastname</label>
+                <input type="text" name="reg[lname]" id="lName" value="<?= $result['u_lname']; ?>"><?= checkFormValidation('reg','lname'); ?>
             </div>
             <div class="data-mobile">
-                <label for="mobile">Mobile</label><br><br>
-                <input type="number" name="reg[mobile]" id="mobile" value="<?= $result['u_mobile']; ?>" ><?= checkFormValidation('reg','mobile'); ?><br><br>
+                <label for="mobile">Mobile</label>
+                <input type="number" name="reg[mobile]" id="mobile" value="<?= $result['u_mobile']; ?>" ><?= checkFormValidation('reg','mobile'); ?>
             </div>
             <div class="data-email">
-                <label for="email">Email</label><br><br>
-                <input type="text" name="reg[email]" id="email" value="<?= $result['u_email']; ?>"><?= checkFormValidation('reg','email'); ?><br><br>
+                <label for="email">Email</label>
+                <input type="text" name="reg[email]" id="email" value="<?= $result['u_email']; ?>"><?= checkFormValidation('reg','email'); ?>
             </div>
             <div class="data-password">
-                <label for="password">Password</label><br><br>
-                <input type="password" name="reg[password]" id="password" value="<?= $result['u_password']; ?>" ><?= checkFormValidation('reg','password'); ?><br><br>
+                <label for="password">Password</label>
+                <input type="password" name="reg[password]" id="password" value="<?= $result['u_password']; ?>" ><?= checkFormValidation('reg','password'); ?>
             </div>
             <div class="data-info">
-                <label for="info">Information</label><br><br>
-                <textarea name="reg[info]" id="info" cols="30" rows="10"><?= $result['u_information']; ?></textarea><?= checkFormValidation('reg','info'); ?><br><br>
+                <label for="info">Information</label>
+                <textarea name="reg[info]" id="info" cols="30" rows="10"><?= $result['u_information']; ?></textarea><?= checkFormValidation('reg','info'); ?>
             </div>
             <input type="submit" name="reg[update]" value="Update" class="styleBtn" ><br>
            <a href="my_profile.php" > <input type="button" class="styleBtn"  value="Back"></a>

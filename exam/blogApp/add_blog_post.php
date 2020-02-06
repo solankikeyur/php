@@ -41,8 +41,8 @@ $category = fetchAllRecord($conn,'parent_cat');
             </div>
         </div>
         <input type="submit" name="blog[submit]" value="Add Blog" class="styleBtn" >
-        <a href="blog_posts.php"><input type="button" value="Back" class="styleBtn" ></a>
     </form>
+    <a href="blog_posts.php"><input type="button" value="Back" class="styleBtn" ></a>
     </center>
 </body>
 </html>

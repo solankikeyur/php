@@ -2,14 +2,12 @@
 
 function connect($dbHost,$dbUser,$dbPass,$dbName){
     $db = mysqli_connect($dbHost,$dbUser,$dbPass,$dbName);
-
     if($db){
         return $db;
     }else{
         echo "Error in Connection:-".mysqli_error($db);
     }
 }
-
 $conn = connect("localhost","keyur","admin","blog_app");
 
 function insertRecord($conn,$tableName,$dataArray){

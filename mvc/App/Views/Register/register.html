@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block body %}
+    <h1>This is Register page View</h1><br>
+    <form action="addNew" method="POST">
+        <label for="fName">FirstName</label>
+        <input type="text" name="fName">
+        <label for="lName">LastName</label>
+        <input type="text" name="lName">
+        <input type="submit" name="submit" value="Submit" id="">
+    </form>
+{% endblock %}

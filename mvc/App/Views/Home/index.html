@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+    <h1>This is Index page of Home View</h1><br>
+    <h2>Welcome{{ name }}</h2>
+    <ul>
+        {% for color in colors %}
+            <li>{{ color }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

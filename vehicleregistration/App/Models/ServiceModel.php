@@ -24,8 +24,8 @@ class ServiceModel extends \Core\Model {
         return count($result);
     }
 
-    public function updateService($data) {
-        
+    public function updateService($data, $id) {
+        return parent::updateRecord('service_registration', $data,"service_id=$id");
     }
 
 }

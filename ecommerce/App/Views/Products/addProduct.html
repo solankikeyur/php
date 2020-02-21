@@ -1,0 +1,71 @@
+{% extends "baseView.html" %}
+    {% if task == "edit" %}
+        {% set title = 'Edit Product' %}
+        {% set btn = 'Update Product' %}
+        {% set action = 'updateProduct' %}
+    {% else %}
+        {% set title = 'Add Product' %}
+        {% set btn = 'Add Product' %}
+        {% set action = 'addProduct' %}
+    {% endif %}
+   {% block body %}
+    <h1>{{title}}</h1>
+    <form method="POST" action="{{action}}" enctype="multipart/form-data" >
+        <div id="product">
+            <div class="data-productName">
+                <label for="productName">Product Name</label>
+                <input type="text" name="product[productName]" id="productName" value="{{productData[0].name}}" >
+            </div>
+            <div class="data-productDesc">
+                <label for="productDesc">Product Description</label>
+                <input type="text" name="product[productDesc]" id="productDesc" value="{{productData[0].description}}">
+            </div>
+            <div class="data-shortDesc">
+                <label for="shortDesc">Short Description</label>
+                <input type="text" name="product[shortDesc]" id="shortDesc" value="{{productData[0].short_description}}">
+            </div>
+            <div class="data-price">
+                <label for="price">Price</label>
+                <input type="number" name="product[price]" id="price" value="{{productData[0].price}}">
+            </div>
+            <div class="data-stock">
+                <label for="stock">Stock</label>
+                <input type="text" name="product[stock]" id="stock" value="{{productData[0].stock}}">
+            </div>
+            <div class="data-image">
+                <label for="image">Image</label>
+                <input type="file" name="image" id="">
+            </div>
+            <div class="data-urlKey">
+                <label for="urlKey">Url-Key</label>
+                <input type="text" name="product[urlKey]" id="urlKey" value="{{productData[0].url_key}}">
+            </div>
+            <div class="data-sku">
+                <label for="sku">SKU</label>
+                <input type="text" name="product[sku]" id="sku" value="{{productData[0].sku}}">
+            </div>
+            <div class="data-category">
+                <label for="category">Select Category</label>
+                <select name="product[category]" id="category">
+                    <option value="NULL">None</option>
+                    {% for cat in catList %}
+                    {% if productData[0].category == cat.name %}
+                        {% set c = "selected" %}
+                    {% else %}
+                        {% set c = "" %}
+                    {% endif %}
+                    <option value="{{cat.cat_id}}" {{c}} >{{cat.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="data-status">
+                <label for="status">Status</label>
+                <select name="product[status]" id="">
+                    <option value="1" >1</option>
+                    <option value="0" >0</option>
+                </select>
+            </div>
+            <input type="submit" name="addProduct" id="" value="{{btn}}">
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "baseUser.html" %}
+
+{% block body %}
+    <h2>Register Here</h2><hr>
+    <form action="registerUser" method="POST">
+        <div class="data-register container" >
+            <div class="data-firstname" class="form-group">
+                <label for="regFirstName">Firstname</label>
+                <input type="text" name="register[firstName]" id="regFirstName" class="form-control">
+            </div>
+            <div class="data-lastname" class="form-group">
+                <label for="regLastName">Lastname</label>
+                <input type="text" name="register[lastName]" id="regLastName" class="form-control">
+            </div>
+            <div class="data-email" class="form-group">
+                <label for="regEmail">E-mail</label>
+                <input type="email" name="register[email]" id="regEmail" class="form-control">
+            </div>
+            <div class="data-password" class="form-group">
+                <label for="regPassword">Password</label>
+                <input type="password" name="register[password]" id="regPassword" class="form-control">
+            </div>
+            <div class="data-registerbtn" style="margin-top: 15px;">
+                <input type="submit" name="userRegister" id="" value="Register" class="form-control btn btn-lg btn-danger">
+            </div>
+        </div>
+    </form>
+{% endblock %}

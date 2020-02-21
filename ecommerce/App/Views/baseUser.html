@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<title>{% block title %}{% endblock %}</title>
+</head>
+
+<body class="container" >
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+        <a class="navbar-brand" href="/cybercom/ecommerce/Public">E-Commerce</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+              {% for category in categoryList %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{category.parentCatName}}
+                </a>
+                {% set childList = category.childCatName|split(",") %}
+                {% set childUrlList = category.childUrl|split(",") %}
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  {% for i in 0..childList|length %}
+                  <a class="dropdown-item" href="/cybercom/ecommerce/Public/{{childUrlList[i]}}/ProductUser/viewProduct">{{ childList[i] }}</a>
+                  {% endfor %}  
+                </div>
+              </li>
+              {% endfor %}
+              {% if session.userId != null  %}
+              <span class="navbar-text">
+                Welcome, {{session.userName}}
+              </span>
+                <li class="nav-item">
+                  <a id="showCart" href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                    <button class="btn btn-primary btn-sm">Show Cart</button>
+                  </a>
+              </li>
+                <li class="nav-item my-2 my-lg-0">
+                  <a href="/cybercom/ecommerce/Public/User/userLogout" class="nav-link"><button class="btn btn-danger btn-sm">Logout</button></a>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                  <a href="/cybercom/ecommerce/Public/Admin/login" class="nav-link">Admin-Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/cybercom/ecommerce/Public/User/userLoginForm">User-Login</a>
+                </li>
+
+              {% endif %}
+              
+           
+          </ul>
+          
+        </div>
+      </nav>
+    <hr>
+    {% block body %}
+    {% endblock %}
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Your Cart</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="cartBody">
+            <table  class="table">
+              <tbody id="cartTable">
+
+              </tbody>
+              <tfoot id="grandTotal">
+
+              </tfoot>
+            </table><hr>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        
+          <ul class="navbar-nav">
+              {% for page in pageList %}
+            <li class="nav-item active">
+              <a class="nav-link" href="/cybercom/ecommerce/Public/{{page.url_key}}">{{page.page_title}}</a>
+            </li>
+            
+              {% endfor %}
+          </ul>
+        </div>
+      </nav>
+    </footer>
+</body>
+<script type="text/javascript">
+
+  function displayCart() {
+    $.ajax({
+      url : "/cybercom/ecommerce/Public/Cart/displayCart",
+      success : function(data) {
+         var productData = JSON.parse(data);
+         var data = "<tr><th>Product Name</th><th>Quantity</th><th>Total Price</th><th>Action</th></tr>";
+         var grandTotal = 0;
+        for(var i = 0;i<productData.length;i++){
+          var product = productData[i];
+          var quantity = product['quantity']
+          grandTotal+= product['price']*quantity;
+          data += "<tr><td>"+product['name']+"</td><td>"+"<input type='number' id='"+product['p_id']+"' onchange='changeQuantity("+product['p_id']+")' value='"+quantity+"' >"+"</td><td>"+quantity*product['price']+"</td><td><button class='btn btn-danger' onclick=removeProduct("+product['p_id']+") '>Remove</button></td></tr>";
+        }
+        $("#cartTable").html(data);
+        $("#grandTotal").html("<tr><td></td><td>Total Amount</td><td>"+grandTotal+"</td></tr>");
+      }
+      
+    });
+  }
+  $("#showCart").click(function() {
+    displayCart();
+  });
+
+  function changeQuantity(productId) {
+    var quantity = $('#'+productId).val();
+    var productId = productId;
+    //console.log(data);
+    $.ajax({
+      url : "/cybercom/ecommerce/Public/Cart/updateCart",
+      method : "POST",
+      data : {p_id:productId, quant:quantity},
+      success : function(response) {
+        displayCart();
+      }
+    });
+  }
+  function removeProduct(id){
+    var productId = id;
+    $.ajax({
+      url : "/cybercom/ecommerce/Public/Cart/removeCart",
+      method: "POST",
+      data: {productId: id},
+      success: function(data) {
+          alert("Item Removed");
+          displayCart();
+      }
+    });
+  }
+
+  
+</script>
+</html>

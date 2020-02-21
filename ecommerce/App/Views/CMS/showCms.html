@@ -1,0 +1,25 @@
+{% extends "baseView.html" %}
+{% block title %}Show CMS{% endblock %}
+{% block body %}
+<h1>CMS Pages</h1><hr>
+<a href="/cybercom/ecommerce/Public/Admin/Cms/addCms">Add CMS</a>
+<table class="table">
+    <tr>
+        <th>Page Title</th>
+        <th>Content</th>
+        <th>Url-Key</th>
+        <th>Actions</th>
+    </tr>
+    {% for data in cmsData %}
+    <tr>
+        <td>{{data.page_title}}</td>
+        <td>{{data.content}}</td>
+        <td>{{data.url_key}}</td>
+        <td>
+            <a href="/cybercom/ecommerce/Public/Admin/Cms/{{data.cms_id}}/editCms">Edit</a>
+            <a href="/cybercom/ecommerce/Public/Admin/Cms/{{data.cms_id}}/deleteCms">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

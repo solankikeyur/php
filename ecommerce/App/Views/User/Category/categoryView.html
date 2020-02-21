@@ -1,0 +1,21 @@
+{% extends "baseUser.html" %}
+
+{% block body %}
+    <h2>{{productTitle.name}}</h2><hr>
+    <div class="row">
+    {% for product in products %}
+   
+      <div class="col-md-3">
+        <div class="card" style="height: 300px;">
+          <img class="card-img-top" src="../../{{product.image}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text">{{product.description}}</p>
+            <a href="/cybercom/ecommerce/Public/{{product.url_key}}/ProductUser/productDetail" class="btn btn-primary">Show More</a>
+          </div>
+        </div>
+      </div>
+   
+      {% endfor %}
+    </div>
+{% endblock %}

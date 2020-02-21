@@ -1,0 +1,28 @@
+{% extends "baseUser.html" %}
+
+
+
+{% block body %}
+    <h2>{{product.name}}</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="../../{{product.image}}" width="150" height="120" >
+        </div>
+        <div class="col-md-4">
+            <h5>Product Id</h5><hr>
+            <span id="productId">{{product.p_id}}</span>
+            <h5>Description</h5><hr>
+            <p>{{product.description}}</p>
+            <h5>Price</h5><hr>
+            <span>{{product.price}}</span>
+            <h5>Quantity</h5>
+            <input type="number" id="productQuan" >
+        </div>
+        {% if session.userId != null %}
+        <div class="col-md-4">
+            <button class="btn btn-lg btn-primary" id="addToCart" >Add to cart</button>
+        </div>
+        {% endif %}
+    </div>
+    <script src="\cybercom\ecommerce\App\Views\User\Product\productView.js" ></script>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "baseUser.html" %}
+
+{% block body %}
+    <h2>Login Here</h2><hr>
+    <form action="validateLogin" method="POST" >
+        <div class="data-login">
+            <div class="data-email" class="form-group">
+                <label for="loginEmail">E-Mail</label>
+                <input type="email" name="login[email]" id="loginEmail" class="form-control">
+            </div>
+            <div class="data-password" class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" name="login[password]" id="loginPassword" class="form-control">
+            </div>
+            <div class="data-loginBtn" class="form-group" style="margin-top: 15px;">
+                <input type="submit" name="loginUser" class="btn btn-lg btn-success form-control" id="" value="Login">
+            </div>
+        </div>
+    </form>
+    <div class="data-registerBtn" style="margin-top: 15px;">
+        <a href="\cybercom\ecommerce\Public\User\registerForm"><button class="btn btn-danger btn-lg form-control">Register</button></a>
+    </div>
+{% endblock %}

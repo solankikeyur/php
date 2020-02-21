@@ -1,0 +1,15 @@
+{% extends "baseUser.html" %}
+{% block title %}Login Form{% endblock %}
+{% block body %}
+<h1>Login Here</h1><hr>
+<form action="dashboard" method="POST">
+    <div class="data-email">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email">
+    </div>
+    <div class="data-pass">
+        <label for="pass">Password</label>
+        <input type="password" name="pass" id="password">
+    </div>
+    <input type="submit" name="login" id="" value="Login" >
+</form>{% endblock %}

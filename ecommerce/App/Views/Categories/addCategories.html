@@ -1,0 +1,65 @@
+{% extends "baseView.html" %}
+    {% if task == "edit" %}
+        {% set title = 'Edit Category' %}
+        {% set btn = 'Update Category' %}
+        {% set action = 'updateCat' %}
+    {% else %}
+        {% set title = 'Add Category' %}
+        {% set btn = 'Add Category' %}
+        {% set action = 'addCategory' %}
+    {% endif %}
+    {% block title %}{{title}}{% endblock %}
+{% block body %}
+    
+    <h1>{{title}}</h1><hr>
+    <form action="{{action}}" method="POST" enctype="multipart/form-data">
+        <div id="category">
+            <div class="categoryName">
+                <label>Category Name </label>
+                <input type="text" name="category[categoryName]" value="{{ categoryData[0].name }}">
+            </div>
+            <div class="categoryDesc">
+                <label> Description </label>
+                <input type="text" name="category[description]" value="{{ categoryData[0].description}}">
+            </div>
+            <div class="categoryImage">
+                <label for="">Image</label>
+                <input type="file" name="categoryImage" accept="image/*">
+            </div>
+            <div class="urlKey">
+                <label for="">URL key</label>
+                <input type="text" name="category[urlKey]" value="{{ categoryData[0].url_key}}">
+            </div>
+            <div class="category">
+                <label for="">Parent Category </label>
+                 <select name="category[parentCategoryId]" value="">
+                    <option selected value="NULL">None</option>
+                    {% for cat in catList %}
+                        {% if cat.name == categoryData[0].name %}
+                            {% set s = "selected" %}
+                        {% else %}
+                            {% set s = "" %}
+                        {% endif %}
+                        
+                        <option value="{{cat.cat_id}}" {{s}} >{{cat.name}}</option>
+                    {% endfor %}
+                 </select>
+            </div>
+            <div class="status">
+                <label for="">Status</label>
+                {% if categoryData[0].status == 1 %}
+                    {% set one = "selected" %}
+                {% else %}
+                    {% set two = "selected" %}
+                {% endif %}
+                <select name="category[status]">
+                    <option value="1" {{one}} >1</option>
+                    <option value="2" {{two}} >0</option>
+                </select>
+            </div>
+            <div class="submit">
+                <input type="submit" value="{{btn}}" name="submit">
+            </div>
+        </div>
+    </form>
+{% endblock %}

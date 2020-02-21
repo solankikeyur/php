@@ -1,0 +1,36 @@
+{% extends "baseView.html" %}
+{% block title %}Add CMS{% endblock %}
+{% if task == "edit" %}
+    {% set title = "Edit Cms" %}
+    {% set action = "updateCmsData"  %}
+    {% set btn = "Update CMS" %}
+{% else %}
+    {% set title = "Add Cms" %}
+    {% set action = "addCmsData" %}
+    {% set btn = "Add CMS" %}
+{% endif %}
+{% block body %}
+<h1>{{title}}</h1><hr>
+<form method="POST" action="{{action}}">
+    <div class="data-content">
+        <label for="content">Content</label>
+        <textarea name="cms[content]" rows="5" cols="30">{{cmsData[0].content}}</textarea>
+    </div>
+    <div class="data-title">
+        <label for="title">Title</label>
+        <input type="text" name="cms[title]" id="title" value="{{cmsData[0].page_title}}">
+    </div>
+    <div class="data-urlKey">
+        <label for="urlKey">Url-Key</label>
+        <input type="text" name="cms[urlKey]" id="urlKey" value="{{cmsData[0].url_key}}">
+    </div>
+    <div class="data-status">
+        <label for="status">Status</label>
+        <select name="cms[status]" id="status">
+            <option value="1" >Active</option>
+            <option value="0" >Not Active</option>
+        </select>
+    </div>
+    <input type="submit" name="addCms" Value="{{btn}}">
+</form>
+{% endblock %}

@@ -1,0 +1,27 @@
+   {% extends "baseView.html" %}
+   {% block title %}Show Products{% endblock %}
+    {% block body %}
+    <h1>Products List</h1><hr>
+    <ul>
+        <a href="\cybercom\ecommerce\Public\Admin\Products\add"><li>Add Product</li></a>
+    </ul>
+    <table class="table">
+        <tr>
+            <th>Product Name</th>
+            <th>Product Description</th>
+            <th>Product Image</th>
+            <th>Action</th>
+        </tr>
+        {% for p in productList %}
+        <tr>
+            <td>{{p.name}}</td>
+            <td>{{p.description}}</td>
+            <td><img src="../{{p.image}}" width="70" height="70"></td>
+            <td>
+                <a href="/cybercom/ecommerce/Public/Admin/Products/{{p.p_id}}/deleteProduct">Delete</a>
+                <a href="/cybercom/ecommerce/Public/Admin/Products/{{p.p_id}}/editProduct">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endblock %}

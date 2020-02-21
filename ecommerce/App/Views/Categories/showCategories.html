@@ -1,0 +1,27 @@
+{% extends "baseView.html" %}
+    {% block title %}Show Categories{% endblock %}
+{% block body %}
+    <h1>Categories List</h1><hr>
+    <ul>
+        <a href="/cybercom/ecommerce/Public/Admin/Categories/Add"><li>Add</li></a>
+    </ul>
+    <table class="table">
+        <tr>
+            <th>Category Name</th>
+            <th>Parent Category</th>
+            <th>Category Image</th>
+            <th>Actions</th>
+        </tr>
+        {% for cat in catList %}
+        <tr>
+            <td>{{cat.name}}</td>
+            <td>{{cat.parent_cat}}</td>
+            <td><img src="../{{cat.image}}" width="70" height="70" ></td>
+            <td>
+                <a href="/cybercom/ecommerce/Public/Admin/Categories/{{cat.cat_id}}/editCategory">Edit</a>
+                <a href="/cybercom/ecommerce/Public/Admin/Categories/{{cat.cat_id}}/deleteCategory">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

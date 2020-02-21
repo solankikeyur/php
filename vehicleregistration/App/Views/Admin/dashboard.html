@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Service Requests</h1><hr>
+    <table border="2">
+        <tr>
+            <th>Service Id</th>
+            <th>Service Title</th>
+            <th>Vehicle Number</th>
+            <th>License Number</th>
+            <th>Date</th>
+            <th>Time-Slot</th>
+            <th>Issue</th>
+            <th>Center</th>
+            <th>Status</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+        {% for record in serviceRecords %}
+        <tr>
+            <td>{{record.service_id}}</td>
+            <td>{{record.service_title}}</td>
+            <td>{{record.service_vehicleno}}</td>
+            <td>{{record.service_licenceno}}</td>
+            <td>{{record.service_date}}</td>
+            <td>{{record.service_timeslot}}</td>
+            <td>{{record.service_issue}}</td>
+            <td>{{record.service_center}}</td>
+            <td>{{record.service_status}}</td>
+            <td>{{record.service_createdat}}</td>
+            <td>
+                <a href="/cybercom/vehicleregistration/Public/Admin/{{record.service_id}}/editService">Edit</a>
+                <a></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

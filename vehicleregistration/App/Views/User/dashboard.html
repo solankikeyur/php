@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Dashboard</h1><hr>
+     <a href="\cybercom\vehicleregistration\Public\Main\serviceForm"> <input type="button" value="Add Service"></a>
+     <table border="2">
+        <tr>
+            <th>Service Id</th>
+            <th>Title</th>
+            <th>Vehicle Number</th>
+            <th>License Number</th>
+            <th>Date</th>
+            <th>Time-Slot</th>
+            <th>Issue</th>
+            <th>Center</th>
+            <th>Status</th>
+        </tr>
+        {% for record in serviceRecords %}
+        <tr>
+            <td>{{record.service_id}}</td>
+            <td>{{record.service_title}}</th>
+            <td>{{record.service_vehicleno}}</td>
+            <td>{{record.service_licenceno}}</td>
+            <td>{{record.service_date}}</td>
+            <td>{{record.service_timeslot}}</td>
+            <td>{{record.service_issue}}</td>
+            <td>{{record.service_center}}</td>
+            <td>{{record.service_status}}</td>
+        </tr>
+        {% endfor %}
+     </table>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegisterForm</title>
+</head>
+<body>
+    <h1>Register Form</h1><hr>
+    <form method="POST" action="\cybercom\vehicleregistration\Public\User\validateRegister">
+        <div class="data-register">
+            <div class="data-firstName">
+                <label for="regFirstName">Firstname</label>
+                <input type="text" name="regUser[firstName]" id="regFirstName">
+            </div>
+            <div class="data-lastName">
+                <label for="regLastName">Lastname</label>
+                <input type="text" name="regUser[lastName]" id="regLastName">
+            </div>
+            <div class="data-email">
+                <label for="regEmail">E-Mail</label>
+                <input type="email" name="regUser[email]" id="regEmail">
+            </div>
+            <div class="data-password">
+                <label for="regPassword">Passsword</label>
+                <input type="password" name="regUser[password]" id="regPassword">
+            </div>
+            <div class="data-phoneNo">
+                <label for="regPhoneNo">Phone Number</label>
+                <input type="number" name="regUser[phoneNo]" id="regPhoneNo">
+            </div>
+            <div class="data-street">
+                <label for="regStreet">Street</label>
+                <input type="text" name="regAdd[street]" id="regStreet">
+            </div>
+            <div class="data-city">
+                <label for="regCity">City</label>
+                <input type="text" name="regAdd[city]" id="regCity">
+            </div>
+            <div class="data-state">
+                <label for="regState">State</label>
+                <input type="text" name="regAdd[state]" id="regState">
+            </div>
+            <div class="data-zipCode">
+                <label for="regZipCode">Zip-Code</label>
+                <input type="text" name="regAdd[zipCode]" id="regZipCode">
+            </div>
+            <div class="data-country">
+                <label for="regCountry">Country</label>
+                <input type="text" name="regAdd[country]" id="regCountry">
+            </div>
+        </div>
+        <input type="submit" name="register" Value="Register">
+    </form>
+</body>
+</html>

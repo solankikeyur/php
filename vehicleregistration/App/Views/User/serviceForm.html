@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Form</title>
+<script
+src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+crossorigin="anonymous"></script>
+<script language="javascript">
+    $(document).ready(function () {
+        $("#serviceDate").datepicker({
+            minDate: 0
+        });
+    });
+</script>
+
+</head>
+<body>
+    <h1>Service Form</h1><hr>
+    <form method="POST" action="\cybercom\vehicleregistration\Public\Service\addServiceRequest">
+        <div class="data-service">
+            <div class="data-title">
+                <label for="serviceTitle">Title</label>
+                <input type="text" name="service[title]" id="serviceTitle" value="{{postedData.service_title}}">
+            </div>
+            <div class="data-vehicleNumber">
+                <label for="vehicleNumber">Vehicle-Number</label>
+                <input type="text" name="service[vehicleNumber]" id="vehicleNumber" value="{{postedData.service_vehicleno}}">
+            </div>
+            <div class="data-licenseNumber">
+                <label for="licenseNumber">License Number</label>
+                <input type="text" name="service[licenseNumber]" id="licenseNumber" value="{{postedData.service_licenceno}}">
+            </div>
+            <div class="data-date">
+                <label for="serviceDate">Service Date</label>
+                <input type="date" name="service[date]" id="serviceDate" min="{{minDate}}" value="{{postedData.service_date}}">
+            </div>
+            {{minDate}}
+            <div class="data-timeSlot">
+                <label for="serviceTimeSlot">Time-Slot</label>
+                <select name="service[timeSlot]">
+                    {% for time in timeSlot %}
+                    <option value="{{time}}">{{time}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="data-issue">
+                <label for="vehicleIssue">Vehicle Issue</label>
+                <input type="text" name="service[vehicleIssue]" id="vehicleIssue" value="{{postedData.service_issue}}" >
+            </div>
+            <div class="data-center">
+                <label for="serviceCenter">Service-Center</label>
+                <select name="service[center]">
+                    <option value="1">Center 1</option>
+                    <option value="2">Center 2</option>
+                    <option value="3">Center 3</option>
+                </select>
+            </div>
+        </div>
+        <input type="submit" value="Add Service Request" >
+    </form>
+   
+</body>
+
+</html>
